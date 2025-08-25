@@ -1,0 +1,14 @@
+// 1. Hide the default, hardcoded title.
+.ai-bot-conversations__title {
+  display: none;
+}
+
+// 2. Style our new custom greeting component.
+.custom-ai-greeting h1 {
+  // Using clamp for a responsive font size
+  font-size: clamp(1.5rem, 2.6vw + 0.4rem, 1.85rem);
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 1em;
+  text-align: center;
+}
