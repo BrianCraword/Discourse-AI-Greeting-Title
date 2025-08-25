@@ -1,10 +1,6 @@
 {
-  "name": "Discourse AI Greeting Title",
-  "about_url": null,
-  "license_url": null,
-  "component": true,
-  "assets": {
-  },
-  "color_schemes": {
-  }
+  "name": "AI Persona Greeting",
+  "about_url": "",
+  "license_url": "",
+  "component": true
 }
