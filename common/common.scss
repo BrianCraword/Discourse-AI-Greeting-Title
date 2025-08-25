@@ -1,7 +1,4 @@
-/* Hide the default AI conversations title (class name from the AI page) */
-.ai-bot-conversations__title {
-  display: none;
-}
+.ai-bot-conversations__title { display: none; }
 
 .custom-ai-greeting h1 {
   font-size: clamp(1.5rem, 2.6vw + 0.4rem, 1.85rem);
