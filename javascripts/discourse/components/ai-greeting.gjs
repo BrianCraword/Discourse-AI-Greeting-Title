@@ -1,19 +1,14 @@
 import Component from "@glimmer/component";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 
 export default class AiGreeting extends Component {
   @service currentUser;
 
-  get greeting() {
-    // Use the user's name or username, defaulting to "Guest"
-    const rawName = this.currentUser?.name || this.currentUser?.username || "Guest";
-    // Get just the first name
-    const firstName = rawName.split(" ")[0];
-    return `Hello, ${firstName}`;
+  get firstName() {
+    const raw =
+      this.currentUser?.name ||
+      this.currentUser?.username ||
+      "Guest";
+    return String(raw).split(" ")[0];
   }
 }
-<template>
-  <div class="custom-ai-greeting">
-    <h1>{{this.greeting}}</h1>
-  </div>
-</template>
