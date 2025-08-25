@@ -1,9 +1,47 @@
-.ai-bot-conversations__title { display: none; }
+/* Scope all changes to the AI Conversations page */
+.discourse-ai {
+  /* Hide the hard-coded title only on AI Conversations */
+  .ai-bot-conversations__title {
+    display: none;
+  }
 
-.custom-ai-greeting h1 {
-  font-size: clamp(1.5rem, 2.6vw + 0.4rem, 1.85rem);
-  line-height: 1.2;
-  font-weight: 600;
-  margin-bottom: 1em;
-  text-align: center;
+  /* Optional: tighten header spacing when we remove the stock title */
+  .ai-bot-conversations__header {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Our custom greeting styles */
+  .custom-ai-greeting {
+    /* Center and constrain width on large screens */
+    max-width: min(80ch, 92vw);
+    margin: 0.75rem auto 1rem;
+    text-align: center;
+
+    h1 {
+      /* Responsive type without !important */
+      font-size: clamp(1.6rem, 2.2vw + 0.5rem, 2.1rem);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      margin: 0;
+
+      /* Subtle emphasis using theme tokens (dark-mode friendly) */
+      color: var(--primary-high);
+      text-shadow: 0 1px 0 rgba(0,0,0,0.04);
+    }
+
+    /* Optional subtitle if you add one later */
+    .sub {
+      margin-top: 0.4rem;
+      font-size: clamp(0.95rem, 0.6vw + 0.75rem, 1.06rem);
+      color: var(--primary-medium);
+    }
+  }
+}
+
+/* Reduce vertical jitter on very small viewports */
+@media (max-width: 480px) {
+  .discourse-ai .custom-ai-greeting {
+    margin: 0.5rem auto 0.75rem;
+  }
 }
