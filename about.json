@@ -1,6 +1,9 @@
 {
-  "name": "AI Persona Greeting",
-  "about_url": "",
-  "license_url": "",
-  "component": true
+  "name": "AI Greeting Title",
+  "about_url": "https://github.com/BrianCraword/Discourse-AI-Greeting-Title",
+  "license_url": "https://github.com/BrianCraword/Discourse-AI-Greeting-Title/blob/main/LICENSE",
+  "component": true,
+  "authors": "Brian Crawford (with AI assistance)",
+  "theme_version": "1.0.0",
+  "minimum_discourse_version": "3.0.0"
 }
