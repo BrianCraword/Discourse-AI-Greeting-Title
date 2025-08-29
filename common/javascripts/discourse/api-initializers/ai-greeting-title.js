@@ -1,28 +1,16 @@
 import { apiInitializer } from "discourse/lib/api";
 
-export default apiInitializer("1.8.0", (api) => {
-  const settings = api.container.lookup("service:site-settings");
-
-  const log = settings.enable_logging
-    ? (...args) => console.log("[ai-greeting]", ...args)
-    : () => {};
+export default apiInitializer("0.11.1", (api) => {
+  const log = (...a) => console.log("[ai-greeting]", ...a);
 
   function applyGreeting() {
     const el = document.querySelector(".ai-bot-conversations__title");
     if (!el) return; // Not on the AI page yet
 
-    let user;
-    try {
-      user = api.getCurrentUser?.();
-    } catch (e) {
-      log("Error getting user:", e);
-      user = null;
-    }
-
+    const user = api.getCurrentUser?.();
     const raw = user?.name || user?.username || "Guest";
     const first = raw.split(" ")[0];
-    const template = settings.greeting_template || "Hello, {name}";
-    const desired = template.replace("{name}", first);
+    const desired = `Hello, ${first}`; // Fixed template literal with backticks
 
     if (el.textContent !== desired) {
       el.textContent = desired;
@@ -32,15 +20,19 @@ export default apiInitializer("1.8.0", (api) => {
 
   // Run on SPA navigations
   api.onPageChange(() => {
-    log("Page change detected");
+    log("page change");
     setTimeout(applyGreeting, 0);
   });
 
-  // Catch re-renders (observe main outlet for efficiency)
+  // Catch re-renders of the conversations area (target main outlet for efficiency)
   const mainOutlet = document.querySelector("#main-outlet");
   if (mainOutlet) {
     const mo = new MutationObserver(applyGreeting);
     mo.observe(mainOutlet, { childList: true, subtree: true });
+  } else {
+    // Fallback to body if main-outlet not found
+    const mo = new MutationObserver(applyGreeting);
+    mo.observe(document.body, { childList: true, subtree: true });
   }
 
   // First run
