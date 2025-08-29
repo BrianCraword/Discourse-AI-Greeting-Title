@@ -1,0 +1,9 @@
+greeting_template:
+  default: "Hello, {name}"
+  type: string
+  description: "The greeting format. Use {name} as a placeholder for the user's first name (e.g., 'Hi, {name}!'). Defaults to 'Hello, {name}'."
+
+enable_logging:
+  default: true
+  type: bool
+  description: "Enable console logging for debugging (disable for production)."
